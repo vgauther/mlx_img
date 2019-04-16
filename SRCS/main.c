@@ -6,20 +6,33 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 15:40:29 by vgauther          #+#    #+#             */
-/*   Updated: 2019/04/10 21:42:31 by vgauther         ###   ########.fr       */
+/*   Updated: 2019/04/16 14:11:13 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../INCLUDES/fdf.h"
 
-void	put_pixel_image(t_pixel pixel, t_data win1, char *str, int color)
+#define D_BLUE 255
+#define D_RED 16711680
+#define D_GREEN 65280
+#define D_YELLOW 16776960
+#define D_PURPLE 16711935
+#define D_BLACK 0
+#define D_WHITE 16777215
+
+#define WIN_LEN 1000
+#define WIN_HEIGHT 1000
+
+
+
+void	put_pixel_image(t_pixel pixel, char *str, int color)
 {
 	unsigned char r;
 	unsigned char g;
 	unsigned char b;
 	int len;
 
-	len = 1000;
+	len = WIN_LEN;
 
 	pixel.color = color;
 	r = (pixel.color >> 16) & 0xff;
@@ -29,79 +42,61 @@ void	put_pixel_image(t_pixel pixel, t_data win1, char *str, int color)
 	str[(pixel.x * 4) + (len * 4 * pixel.y) + 1] = g;
 	str[(pixel.x * 4) + (len * 4 * pixel.y) + 2] = r;
 	str[(pixel.x * 4) + (len * 4 * pixel.y) + 3] = 0;
-	(void)win1;
 }
 
-void				recup_data_from_the_file(char *file_name)
-{
-	char *gnl_ret;
-	int fd;
+/*
+** In this function we just have 'whiles' to create the square patern. The important
+** things are in the put_pixel_image function
+*/
 
-	fd = open(file_name, O_RDONLY);
-	while (get_next_line(fd, &gnl_ret) == 1)
+void			print_square(int left_corner_x, int left_corner_y, int len_in_pixels, t_data *data)
+{
+	t_pixel		pix;
+	int			y_stop;
+	int			x_stop;
+
+	x_stop = left_corner_x + len_in_pixels;
+	y_stop = left_corner_y + len_in_pixels;
+	pix.y = left_corner_y;
+
+	while (pix.y != y_stop)
 	{
-		ft_putstr(gnl_ret);
-		ft_putstr("\n");
-		free(gnl_ret);
+		pix.x = left_corner_x;
+		while (pix.x != x_stop)
+		{
+			put_pixel_image(pix, data->image.img_str, D_RED);
+			pix.x++;
+		}
+		pix.y++;
 	}
 }
 
 int				ft_key_pressed(int k, void *param)
 {
-	if (k == 53)
-	{
+	if (k == 53) /* on a qwerty macbook keyboard the esc keyboard key number is 53 */
 		exit(0);
-	}
 	return (0);
 	(void)param;
 }
 
-int				main(int ac, char **av)
+int				main(void)
 {
 	t_data data;
-	int i1;
-	int i2;
-	int i3;
-	t_pixel pix;
 
-	pix.x = 20;
-	pix.y = 20;
-	pix.color = 400000;
+	data.mlx = mlx_init(); /* initialization of mlx */
+	data.win = mlx_new_window(data.mlx, WIN_LEN, WIN_HEIGHT, "MLX_IMG"); /* window's creation */
 
-	if (ac != 2)
-	{
-		ft_putstr("Usage : ./fdf <filename>\n");
-		return (0);
-	}
+	data.image.img = mlx_new_image(data.mlx, WIN_LEN, WIN_HEIGHT);
+	data.image.img_str = mlx_get_data_addr(data.image.img, &data.image.bits, &data.image.size_line, &data.image.endian);
 
+	mlx_hook(data.win, 2, 0, ft_key_pressed, &data); /* it looks if a key is pressed then she launch a function (here: ft_key_pressed)*/
 
-	recup_data_from_the_file(av[1]);
-	data.mlx = mlx_init();
-	data.win = mlx_new_window(data.mlx, 1000, 1000, "FDF");
-	data.image.img = mlx_new_image(data.mlx, 1000, 1000);
-	data.image.img_str = mlx_get_data_addr(data.image.img, &i1, &i2, &i3);
-	mlx_hook(data.win, 2, 0, ft_key_pressed, &data);
-	put_pixel_image(pix,data,data.image.img_str,4000000);
-	pix.y = 21;
-	put_pixel_image(pix,data,data.image.img_str,4000000);
-	pix.y = 22;
-	put_pixel_image(pix,data,data.image.img_str,4000000);
-	pix.y = 23;
-	put_pixel_image(pix,data,data.image.img_str,4000000);
-	pix.y = 24;
-	put_pixel_image(pix,data,data.image.img_str,4000000);
-	pix.y = 25;
-	put_pixel_image(pix,data,data.image.img_str,4000000);
-	pix.y = 26;
-	put_pixel_image(pix,data,data.image.img_str,4000000);
-	pix.y = 27;
-	put_pixel_image(pix,data,data.image.img_str,4000000);
-	pix.y = 28;
-	put_pixel_image(pix,data,data.image.img_str,4000000);
-	mlx_put_image_to_window(data.mlx, data.win, data.image.img, 0, 0);
-	mlx_destroy_image(data.mlx, data.image.img);
+	print_square(0, 0, 500, &data); /* print a square look for it to understand how to put pixel in image */
 
-	mlx_loop(data.mlx);
-	(void)av;
+	mlx_put_image_to_window(data.mlx, data.win, data.image.img, 0, 0); /* print the image you created on the window */
+	mlx_destroy_image(data.mlx, data.image.img); /* to avoid leaks u have to destroy the image before create an other */
+
+	mlx_loop(data.mlx); /* mlx_loop allow the program to keep looking for user's actions */
+
 	return (0);
 }

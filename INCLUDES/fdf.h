@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:33:49 by vgauther          #+#    #+#             */
-/*   Updated: 2019/04/10 21:30:07 by vgauther         ###   ########.fr       */
+/*   Updated: 2019/04/16 13:02:19 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 
 typedef struct	s_img
 {
-	void *img;
-	char *img_str;
+	void 	*img;
+	char 	*img_str;
 	int		bits;
 	int		size_line;
 	int		endian;
@@ -35,10 +35,10 @@ typedef struct	s_img
 
 typedef struct s_data
 {
-	void *mlx;
-	void *win;
-	void *img;
-	t_img image;
+	void 	*mlx;
+	void 	*win;
+	void 	*img;
+	t_img 	image;
 }				t_data;
 
 typedef struct	s_pixel
