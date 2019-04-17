@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fde-souz <fde-souz@student.42.fr>          +#+  +:+       +#+         #
+#    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/11/29 11:52:57 by fde-souz          #+#    #+#              #
-#    Updated: 2019/04/10 20:30:28 by vgauther         ###   ########.fr        #
+#    Created: 2019/04/17 12:01:55 by vgauther          #+#    #+#              #
+#    Updated: 2019/04/17 12:02:29 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ BOLDWHITE=\033[1m\033[37m
 
 .PHONY: all, $(NAME), clean, fclean, re
 
-NAME = fdf
+NAME = mlx_img
 
 CC = gcc
 CC_FLAGS = -Wall -Werror -Wextra
@@ -44,9 +44,9 @@ INC = $(addprefix -I,$(INC_PATH))
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
-INC_NAME = fdf.h
+INC_NAME = mlx_img.h
 
-SRC_NAME = main.c 
+SRC_NAME = main.c
 
 all: $(NAME)
 

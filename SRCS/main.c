@@ -6,11 +6,11 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 15:40:29 by vgauther          #+#    #+#             */
-/*   Updated: 2019/04/17 11:34:07 by vgauther         ###   ########.fr       */
+/*   Updated: 2019/04/17 12:02:48 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../INCLUDES/fdf.h"
+#include "../INCLUDES/mlx_img.h"
 
 #define D_BLUE 255
 #define D_RED 16711680
