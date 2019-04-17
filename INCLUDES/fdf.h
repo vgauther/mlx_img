@@ -6,14 +6,14 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:33:49 by vgauther          #+#    #+#             */
-/*   Updated: 2019/04/16 13:02:19 by vgauther         ###   ########.fr       */
+/*   Updated: 2019/04/17 11:30:39 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include "../minilibx_macos/mlx.h"
+# include "../minilibx/mlx.h"
 # include "../libft/includes/libft.h"
 # include <stdio.h>
 # include <unistd.h>
@@ -37,7 +37,6 @@ typedef struct s_data
 {
 	void 	*mlx;
 	void 	*win;
-	void 	*img;
 	t_img 	image;
 }				t_data;
 
@@ -45,7 +44,6 @@ typedef struct	s_pixel
 {
 	int x;
 	int y;
-	int color;
 }				t_pixel;
 
 #endif

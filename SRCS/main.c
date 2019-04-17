@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 15:40:29 by vgauther          #+#    #+#             */
-/*   Updated: 2019/04/16 14:11:13 by vgauther         ###   ########.fr       */
+/*   Updated: 2019/04/17 11:34:07 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,9 @@ void	put_pixel_image(t_pixel pixel, char *str, int color)
 
 	len = WIN_LEN;
 
-	pixel.color = color;
-	r = (pixel.color >> 16) & 0xff;
-	g = (pixel.color >> 8) & 0xff;
-	b = pixel.color & 0xff;
+	r = (color >> 16) & 0xff;
+	g = (color >> 8) & 0xff;
+	b = color & 0xff;
 	str[(pixel.x * 4) + (len * 4 * pixel.y)] = b;
 	str[(pixel.x * 4) + (len * 4 * pixel.y) + 1] = g;
 	str[(pixel.x * 4) + (len * 4 * pixel.y) + 2] = r;
