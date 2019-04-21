@@ -19,11 +19,11 @@ Comme tout le monde le sait, les images/photos sont composées de milliers de pi
 ```C
 typedef struct	s_img
 {
-	void 	*img;
-	char 	*img_str;
-	int		bits;
-	int		size_line;
-	int		endian;
+	void  *img;
+	char  *img_str;
+	int   bits;
+	int   size_line;
+	int   endian;
 }				t_img;
 ```
 
