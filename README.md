@@ -39,5 +39,7 @@ mlx_put_image_to_window(void *mlx_ptr, void *win_ptr, void *img_ptr, int corner_
 ### ATTENTION ÇA LEAKS
 
 ```C
-mlx_destroy_image(data.mlx, data.image.img);
+mlx_destroy_image(void *mlx_ptr, void *mlx_img);
 ```
+
+Pour prevenir de tout leaks, il faut utiliser la fonction mlx_destroy_image
