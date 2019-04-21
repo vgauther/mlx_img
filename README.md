@@ -20,6 +20,10 @@ Elle n'est pas obligatoire mais je la conseil très fortement. En effet, les ima
 
 ### La création d'une image
 
+```C
+	mlx_put_pixel();
+```
+
 ### Modifier un pixel
 
 À la difference de la fonction mlx_put_pixel, vous ne devrez pas créer un pixel à afficher dans votre image. En réalité, la fonction mlx_create_windows créée une image complète avec des pixels vides. (Pixels noirs)
