@@ -24,7 +24,7 @@ typedef struct	s_img
 	int   bits;
 	int   size_line;
 	int   endian;
-}				t_img;
+}               t_img;
 ```
 
 Elle n'est pas obligatoire mais je la conseil très fortement. En effet, les images sont définies par plusieurs variable.
