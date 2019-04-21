@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 15:40:29 by vgauther          #+#    #+#             */
-/*   Updated: 2019/04/17 12:02:48 by vgauther         ###   ########.fr       */
+/*   Updated: 2019/04/17 12:24:08 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int				main(void)
 	print_square(0, 0, 500, &data); /* print a square look for it to understand how to put pixel in image */
 
 	mlx_put_image_to_window(data.mlx, data.win, data.image.img, 0, 0); /* print the image you created on the window */
-	mlx_destroy_image(data.mlx, data.image.img); /* to avoid leaks u have to destroy the image before create an other */
+	mlx_destroy_image(data.mlx, data.image.img); /* to avoid leaks you have to destroy the image before creating an other */
 
 	mlx_loop(data.mlx); /* mlx_loop allow the program to keep looking for user's actions */
 
