@@ -16,15 +16,26 @@ Comme tout le monde le sait, les images/photos sont composées de milliers de pi
 
 ### La structure image
 
+```C
+typedef struct	s_img
+{
+	void 	*img;
+	char 	*img_str;
+	int		bits;
+	int		size_line;
+	int		endian;
+}				t_img;
+```
+
 Elle n'est pas obligatoire mais je la conseil très fortement. En effet, les images sont définies par plusieurs variable.
 
 ### La création d'une image
 
 ```C
-mlx_new_image(void *mlx_ptr, int largeur, int hauteur);
+mlx_new_image(void *mlx_ptr, int largeur, int hauteur)
 ```
 
-Cette fonction vous renvoie un pointeur image qui permet a votre programme.
+Cette fonction vous renvoie un pointeur image qui permet a votre programme de reconnaitre l'image sur laquelle vous travaillée.
 
 ### Modifier un pixel
 
@@ -33,13 +44,13 @@ Cette fonction vous renvoie un pointeur image qui permet a votre programme.
 ### Afficher une image dans une fenêtre
 
 ```C
-mlx_put_image_to_window(void *mlx_ptr, void *win_ptr, void *img_ptr, int corner_left_x, int corner_left_y);
+mlx_put_image_to_window(void *mlx_ptr, void *win_ptr, void *img_ptr, int corner_left_x, int corner_left_y)
 ```
 
 ### ATTENTION ÇA LEAKS
 
 ```C
-mlx_destroy_image(void *mlx_ptr, void *mlx_img);
+mlx_destroy_image(void *mlx_ptr, void *mlx_img)
 ```
 
 Pour prevenir de tout leaks, il faut utiliser la fonction mlx_destroy_image
