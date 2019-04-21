@@ -21,11 +21,23 @@ Elle n'est pas obligatoire mais je la conseil très fortement. En effet, les ima
 ### La création d'une image
 
 ```C
-	mlx_put_pixel();
+mlx_new_image(void *mlx_ptr, int largeur, int hauteur);
 ```
+
+Cette fonction vous renvoie un pointeur image qui permet a votre programme.
 
 ### Modifier un pixel
 
 À la difference de la fonction mlx_put_pixel, vous ne devrez pas créer un pixel à afficher dans votre image. En réalité, la fonction mlx_create_windows créée une image complète avec des pixels vides. (Pixels noirs)
 
-### Afficher une image dans une fenetre
+### Afficher une image dans une fenêtre
+
+```C
+mlx_put_image_to_window(void *mlx_ptr, void *win_ptr, void *img_ptr, int corner_left_x, int corner_left_y);
+```
+
+### ATTENTION ÇA LEAKS
+
+```C
+mlx_destroy_image(data.mlx, data.image.img);
+```
