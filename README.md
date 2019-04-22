@@ -53,13 +53,18 @@ Vous l'aurez compris, c'est grâce a cette fonction que vous pouvez recuperer to
 
 ### Modifier un pixel
 
+C'est sans doute la partie la plus difficile. Mais n'ayez crainte vous allez y arriver.
+
 À la difference de la fonction mlx_put_pixel, vous ne devrez pas créer un pixel à afficher dans votre image. En réalité, la fonction mlx_create_windows créée une image complète avec des pixels vides. (Pixels noirs)
+
+Le problème, c'est qu'il n'y a pas de fonction de la mlx pour le faire. Il faut donc créer la votre. Dans ce git, il y a la fonction put_pixel_image.
 
 ### Afficher une image dans une fenêtre
 
 ```C
-mlx_put_image_to_window(void *mlx_ptr, void *win_ptr, void *img_ptr, int corner_left_x, int corner_left_y)
+mlx_put_image_to_window(void *mlx_ptr, void *win_ptr, void *img, int corner_left_x, int corner_left_y)
 ```
+Rien de plus simple, on passe en argument le mlx_ptr, le win_ptr de la fenetre voulue, le pointeur image pour preciser l'image à afficher  et les coordonnées du pixel le plus en haut à gauche de l'image pour la position.
 
 ### ATTENTION ÇA LEAKS
 
