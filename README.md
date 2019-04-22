@@ -27,7 +27,7 @@ typedef struct	s_img
 }               t_img;
 ```
 
-Elle n'est pas obligatoire mais je la conseil très fortement. En effet, les images sont définies par plusieurs variable.
+Elle n'est pas obligatoire mais je la conseil très fortement. En effet, les images sont définies par plusieurs variables.
 
 ### La création d'une image
 
@@ -36,6 +36,20 @@ mlx_new_image(void *mlx_ptr, int largeur, int hauteur)
 ```
 
 Cette fonction vous renvoie un pointeur image qui permet a votre programme de reconnaitre l'image sur laquelle vous travaillée.
+
+### Récupération de la *img_str
+
+La *img_str est une chaîne de carracteres qui va regrouper tout les pixels de votre image. Pour la recupere on utilise :
+
+```C
+img_str = mlx_get_data_addr(void *img, int *bits, *int size_line, *int endian);
+```
+
+Tout d'abord, la fonction a besoin du pointer de votre image. De cette façon, la fonction vous renvera les informations sur l'image que vous souhaitez.
+
+Ensuite, on constate que la fonction attends des int* c'est-à-dire qu'il faut lui envoyer des adresses de variable int.
+
+Vous l'aurez compris, c'est grâce a cette fonction que vous pouvez recuperer toutes les informations sur votre images.
 
 ### Modifier un pixel
 
@@ -53,4 +67,4 @@ mlx_put_image_to_window(void *mlx_ptr, void *win_ptr, void *img_ptr, int corner_
 mlx_destroy_image(void *mlx_ptr, void *mlx_img)
 ```
 
-Pour prevenir de tout leaks, il faut utiliser la fonction mlx_destroy_image
+Pour prévenir de tout leaks, il faut utiliser la fonction mlx_destroy_image. En effet, char *img_str est une string qui est malloc.
