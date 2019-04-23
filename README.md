@@ -81,12 +81,12 @@ Pour prévenir de tout leaks, il faut utiliser la fonction mlx_destroy_image. En
 
 ### FAQ ?
 #### Les questions qu'on me pose souvent
-
+```
 1. J'ai fais mon programme avec la fonction mlx_put_pixel. Est-ce que je dois tout recommencer ?
-
+```
 NON. En soit, cela ne change pas grand chose au fonctionnement d'un programme tel que fdf ou fractol. Vous devez simplement implementer la creation de l'image, remplacer tous les mlx_put_pixel par des put_pixel_image et enfin afficher l'image.
-
+```
 2. Est-ce que regarder/m'inspirer de ce cour c'est triché ?
-
+```
 Selon moi, NON. Pour moi, Github est la reponse parfait a l'adage : "rien ne sert de ré-inventé la roue"
 . Le plus important c'est de comprendre le fonctionnement des images mlx. Même si vous reprennez certaines fonctions de ce Git, tant que vous les avez comprises, pour moi vous ne trichez pas.
