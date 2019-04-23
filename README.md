@@ -88,5 +88,5 @@ NON. En soit, cela ne change pas grand chose au fonctionnement d'un programme te
 ```
 2. Est-ce que regarder/m'inspirer de ce cour c'est triché ?
 ```
-Selon moi, NON. Pour moi, Github est la reponse parfait a l'adage : "rien ne sert de ré-inventé la roue"
+Selon moi, <strong>NON</strong>. Pour moi, Github est la reponse parfait a l'adage : "rien ne sert de ré-inventé la roue"
 . Le plus important c'est de comprendre le fonctionnement des images mlx. Même si vous reprennez certaines fonctions de ce Git, tant que vous les avez comprises, pour moi vous ne trichez pas.
