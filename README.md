@@ -78,6 +78,7 @@ void	put_pixel_image(t_pixel pixel, char *str, int color)
 	r = (color >> 16) & 0xff;
 	g = (color >> 8) & 0xff;
 	b = color & 0xff;
+	
 	/* to understand try this */
 	/* printf("r : %d | g : %d | b : %d\n", );*/
 
