@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 15:40:29 by vgauther          #+#    #+#             */
-/*   Updated: 2019/04/17 12:24:08 by vgauther         ###   ########.fr       */
+/*   Updated: 2019/04/25 21:39:17 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,16 @@ void	put_pixel_image(t_pixel pixel, char *str, int color)
 	unsigned char b;
 	int len;
 
-	len = WIN_LEN;
+	len = WIN_LEN; /* In fact, it's the len of your image */
 
+	/* in this part you'll see how i decompose a decimal color in a third part decimal color rgb(255, 255, 255)*/
 	r = (color >> 16) & 0xff;
 	g = (color >> 8) & 0xff;
 	b = color & 0xff;
+	/* to understand try this */
+	/* printf("r : %d | g : %d | b : %d\n", );*/
+
+	/* (pixel.x * 4) + (len * 4 * pixel.y) : target of the first bit of the pixel */
 	str[(pixel.x * 4) + (len * 4 * pixel.y)] = b;
 	str[(pixel.x * 4) + (len * 4 * pixel.y) + 1] = g;
 	str[(pixel.x * 4) + (len * 4 * pixel.y) + 2] = r;
@@ -63,7 +68,7 @@ void			print_square(int left_corner_x, int left_corner_y, int len_in_pixels, t_d
 		pix.x = left_corner_x;
 		while (pix.x != x_stop)
 		{
-			put_pixel_image(pix, data->image.img_str, D_RED);
+			put_pixel_image(pix, data->image.img_str, D_GREEN);
 			pix.x++;
 		}
 		pix.y++;

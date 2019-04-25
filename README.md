@@ -64,6 +64,31 @@ C'est sans doute la partie la plus difficile. Mais n'ayez crainte vous allez y a
 
 Le problème, c'est qu'il n'y a pas de fonction de la mlx pour le faire correctement. Une fonction mlx_put_pixel_image par exemple. Il faut donc créer la votre. Dans ce git, il y a la fonction put_pixel_image. Cette fonction est assez complexe car elle a été optimisée au maximum. Je vais donc vous l'expliquer.
 
+```C
+void	put_pixel_image(t_pixel pixel, char *str, int color)
+{
+	unsigned char r;
+	unsigned char g;
+	unsigned char b;
+	int len;
+
+	len = WIN_LEN; /* In fact, it's the len of your image */
+
+	/* in this part you'll see how i decompose a decimal color in a third part decimal color rgb(255, 255, 255) */
+	r = (color >> 16) & 0xff;
+	g = (color >> 8) & 0xff;
+	b = color & 0xff;
+	/* to understand try this */
+	/* printf("r : %d | g : %d | b : %d\n", );*/
+
+	/* (pixel.x * 4) + (len * 4 * pixel.y) : target of the first bit of the pixel */
+	str[(pixel.x * 4) + (len * 4 * pixel.y)] = b;
+	str[(pixel.x * 4) + (len * 4 * pixel.y) + 1] = g;
+	str[(pixel.x * 4) + (len * 4 * pixel.y) + 2] = r;
+	str[(pixel.x * 4) + (len * 4 * pixel.y) + 3] = 0;
+}
+```
+
 ### Afficher une image dans une fenêtre
 
 ```C
