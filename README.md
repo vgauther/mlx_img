@@ -6,15 +6,15 @@
 
 En tant qu'étudiant 42 ayant fait la branche graphique, j'ai pu me rendre compte que la documentation sur la notion d'image de la mlx n'était pas forcément très fournie.
 
-Dans ce guide, je partirais du principe que vous connaissez deja les bases expliquées dans les videos de 42. (mlx_init, mlx_loop, mlx_create_windows, mlx_put_pixel)
+Dans ce guide, je partirais du principe que vous connaissez déjà les bases expliquées dans les vidéos de 42. (mlx_init, mlx_loop, mlx_create_windows, mlx_put_pixel)
 
-Ce guide n'a pas pour ambition d'apporter de réponse parfait. Il s'appuira sur mon experience personnelle. Il se peut donc qu'il y ait des erreurs.
+Ce guide n'a pas pour ambition d'apporter de réponse parfait. Il s'appuiera sur mon expérience personnelle. Il se peut donc qu'il y ait des erreurs.
 
 ### Les images mlx c'est quoi ?
 
-Comme tout le monde le sait, les images/photos sont composées de milliers de pixel. Si vous êtes ici, vous savez que la mlx permet d'afficher des pixels sur la fenêtre grâce à la fonction mlx_put_pixel. Or, cette fonction ne permet d'afficher que pixel par pixel. De plus, elle est obligé de creer un pixel (Elle ne modfie pas le pixel) et elle doit afficher directement le pixel a l'écran. Cela genere beaucoup d'appel système et cela rend votre programme lent.
+Comme tout le monde le sait, les images/photos sont composées de milliers de pixel. Si vous êtes ici, vous savez que la mlx permet d'afficher des pixels sur la fenêtre grâce à la fonction mlx_put_pixel. Or, cette fonction ne permet d'afficher que pixel par pixel. De plus, elle est obligé de créer un pixel (Elle ne modfie pas le pixel) et elle doit afficher directement le pixel à l'écran. Cela genere beaucoup d'appel système et cela rend votre programme lent.
 
-Les images mlx sont bien plus performante car elles sont generer en tant qu'image complete. Il y a donc pas d'appel systeme pour la création des pixels. Puisqu'ici, vous le verrai, vos pixels sont stockés dans une string. De plus, l'affichage se fait une fois pour tous les pixels. Et non pas a chaques pixels.
+Les images mlx sont bien plus performantes. Elles sont générées en tant qu'image complete et non pas pixel par pixel. Il y a donc pas d'appel systeme pour la création des pixels. Puisqu'ici, vous le verrai, vos pixels sont stockés dans une string. De plus, l'affichage se fait une fois pour tous les pixels. Et non pas a chaques pixels.
 
 Vous le verrez, les images mlx permettent de faire beaucoup de chose.
 
@@ -95,7 +95,7 @@ void	put_pixel_image(t_pixel pixel, char *str, int color)
 ```C
 mlx_put_image_to_window(void *mlx_ptr, void *win_ptr, void *img, int corner_left_x, int corner_left_y)
 ```
-Rien de plus simple, on passe en argument le mlx_ptr, le win_ptr de la fenetre voulue, le pointeur image pour preciser l'image à afficher  et les coordonnées du pixel le plus en haut à gauche de l'image pour la position.
+Rien de plus simple, on passe en argument le mlx_ptr, le win_ptr de la fenetre voulue, le pointeur image pour préciser l'image à afficher et les coordonnées du pixel le plus en haut à gauche de l'image pour la position.
 
 ### ATTENTION ÇA LEAKS
 
