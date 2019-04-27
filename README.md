@@ -23,16 +23,16 @@ Vous le verrez, les images mlx permettent de faire beaucoup de chose.
 ```C
 typedef struct	s_img
 {
-	void  *img; /* pointer qui permet d'identifier l'image */
-	char  *img_str; /* string contenant tous les pixels de l'image */
-	int   bits; /* nombre de bits par pixels */
+	void  *img;      /* pointer qui permet d'identifier l'image */
+	char  *img_str;  /* string contenant tous les pixels de l'image */
+	int   bits;      /* nombre de bits par pixels */
 	int   size_line; /*  taille de la img_str*/
-	int   endian; /* permet de signifier la fin d'une image*/
+	int   endian;    /* permet de signifier la fin d'une image*/
 }               t_img;
 ```
 
 Elle n'est pas obligatoire mais je la conseil très fortement. En effet, les images sont définies par plusieurs variables.
-Pour ma part, je n'ai jamais eu a utiliser les 3 int de cette structure. J'esseyerai donc de vous les expliquer au mieux.
+Pour ma part, je n'ai jamais eu à utiliser les 3 int de cette structure. J'esseyerai donc de vous les expliquer au mieux ce que j'ai compris à leurs sujet.
 
 ### La création d'une image
 
@@ -72,17 +72,15 @@ void	put_pixel_image(t_pixel pixel, char *str, int color)
 	unsigned char b;
 	int len;
 
-	len = WIN_LEN; /* In fact, it's the len of your image */
+	len = WIN_LEN; /* En réalité, il s'agit de la longueur de votre image. Ici, mon image et ma fenêtre font la même taille */
 
 	/* in this part you'll see how i decompose a decimal color in a third part decimal color rgb(255, 255, 255) */
+	/* Dans cette partie, voici comment je decompose une couleur decimal en une couleur décimale en trois partie rgb(255, 255, 255) */
 	r = (color >> 16) & 0xff;
 	g = (color >> 8) & 0xff;
 	b = color & 0xff;
-	
-	/* to understand try this */
-	/* printf("r : %d | g : %d | b : %d\n", );*/
 
-	/* (pixel.x * 4) + (len * 4 * pixel.y) : target of the first bit of the pixel */
+	/* (pixel.x * 4) + (len * 4 * pixel.y) : cible le premier bit d'un pixel */
 	str[(pixel.x * 4) + (len * 4 * pixel.y)] = b;
 	str[(pixel.x * 4) + (len * 4 * pixel.y) + 1] = g;
 	str[(pixel.x * 4) + (len * 4 * pixel.y) + 2] = r;
